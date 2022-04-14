@@ -6,11 +6,14 @@ cl = None
 def instagram_comment_removal():
     global cl
     try:
+        ig_account = 'ig_profile_name'
+        ig_pass = 'ig_password'
+        
         cl = Client()
-        cl.login('ig_account', 'ig_pass')
+        cl.login(ig_account, ig_pass)
 
-        user_id = cl.user_id_from_username("ig_account")
-        medias = cl.user_medias(int(user_id), 2)  # three last posts
+        user_id = cl.user_id_from_username(ig_account)
+        medias = cl.user_medias(int(user_id), 3)  # three last posts
 
         posts_with_comments = [post for post in medias if post.comment_count]
         for post in posts_with_comments:
